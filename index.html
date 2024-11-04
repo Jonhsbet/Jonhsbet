@@ -25,19 +25,10 @@
             padding: 15px;
             font-size: 1.5rem;
             color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: left;
             position: fixed;
             top: 0;
             left: 0;
-        }
-        /* Container de Saldo */
-        .balance {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #00ff99;
-            margin-right: 15px;
         }
         /* Configurações dos botões */
         .game-container {
@@ -78,55 +69,16 @@
 </head>
 <body>
     <!-- Barra Superior -->
-    <div class="top-bar">
-        <div>JonhsBet - Jogos</div>
-        <div class="balance">Saldo: R$ <span id="saldo">1000</span></div>
-    </div>
+    <div class="top-bar">JonhsBet - Jogos</div>
 
     <!-- Conteúdo Principal -->
     <div class="game-container">
-        <button class="button-image campo-minado" onclick="jogar('campoMinado')">
+        <button class="button-image campo-minado" onclick="window.open('https://jpfachina01.github.io/jonhsbet-campominado/', '_blank')">
             <div class="button-title">Campo Minado</div>
         </button>
-        <button class="button-image slot-machine" onclick="jogar('slotMachine')">
+        <button class="button-image slot-machine" onclick="window.open('https://jpfachina01.github.io/Jonhsbet/', '_blank')">
             <div class="button-title">Slot Machine</div>
         </button>
     </div>
-
-    <script>
-        let saldo = 1000;
-
-        // Atualiza o saldo na interface
-        function atualizarSaldo() {
-            document.getElementById("saldo").textContent = saldo.toFixed(2);
-        }
-
-        // Função de aposta
-        function jogar(jogo) {
-            const aposta = 100; // Valor da aposta fixa para ambos os jogos
-
-            if (saldo < aposta) {
-                alert("Saldo insuficiente para jogar!");
-                return;
-            }
-
-            // Deduz o valor da aposta do saldo
-            saldo -= aposta;
-            atualizarSaldo();
-
-            // Resultado aleatório: vitória ou derrota
-            const ganhou = Math.random() < 0.5; // 50% de chance de ganhar
-
-            if (ganhou) {
-                const premio = aposta * 2; // Dobro do valor da aposta como prêmio
-                saldo += premio;
-                alert(`Parabéns! Você ganhou R$${premio.toFixed(2)} no ${jogo}!`);
-            } else {
-                alert(`Você perdeu R$${aposta.toFixed(2)} no ${jogo}. Tente novamente!`);
-            }
-
-            atualizarSaldo();
-        }
-    </script>
 </body>
 </html>
